@@ -8,11 +8,11 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name="subscribers")
-public class User {
+@Table(name = "subscribers")
+public class Users {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String uuid;
@@ -20,7 +20,7 @@ public class User {
     @Column(name = "id_user")
     private int idUser;
 
-    @Column(name = "price_User")
+    @Column(name = "price_user")
     private int priceUser;
 
 }
