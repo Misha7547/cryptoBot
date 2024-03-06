@@ -27,7 +27,41 @@ public class UserService {
             Users users = new Users();
             users.setUuid(uuid);
             users.setIdUser(idUser);
+            users.setPriceUser(null);
             usersDao.save(users);
+        }
+    }
+
+    public void newSubscription(int idUser, int prise) {
+
+        List<Users> userList = usersDao.findAll();
+        for (Users user : userList) {
+            if (user.getIdUser() == idUser) {
+                user.setPriceUser(prise);
+                usersDao.update(user);
+            }
+        }
+    }
+
+    public Integer subscriptionWithdrawal (int idUser){ // дописать если значение Null
+
+        Integer prise = null;
+        List<Users> userList = usersDao.findAll();
+        for (Users user : userList) {
+            if (user.getIdUser() == idUser)
+                prise = user.getPriceUser();
+        }
+        return prise;
+    }
+
+    public void deletingSubscription(int idUser) {// дописать если значение Null
+
+        List<Users> userList = usersDao.findAll();
+        for (Users user : userList) {
+            if (user.getIdUser() == idUser) {
+                user.setPriceUser(null);
+                usersDao.update(user);
+            }
         }
     }
 }

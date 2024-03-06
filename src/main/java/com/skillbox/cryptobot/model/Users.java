@@ -21,6 +21,6 @@ public class Users {
     private int idUser;
 
     @Column(name = "price_user")
-    private int priceUser;
+    private Integer priceUser;
 
 }

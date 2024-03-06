@@ -25,16 +25,9 @@ public class UserDao {
         session.close();
     }
 
-    public void delete(Users user) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.delete(user);
-        tx1.commit();
-        session.close();
-    }
-
     public List<Users> findAll() {
-        List<Users> users = (List<Users>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Users").list();
+        List<Users> users = (List<Users>) HibernateSessionFactoryUtil.getSessionFactory()
+                .openSession().createQuery("From Users").list();
         return users;
     }
 }
