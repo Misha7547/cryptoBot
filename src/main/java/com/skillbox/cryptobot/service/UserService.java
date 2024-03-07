@@ -43,7 +43,7 @@ public class UserService {
         }
     }
 
-    public Integer subscriptionWithdrawal (int idUser){ // дописать если значение Null
+    public Integer subscriptionWithdrawal(int idUser) {
 
         Integer prise = null;
         List<Users> userList = usersDao.findAll();
@@ -54,14 +54,17 @@ public class UserService {
         return prise;
     }
 
-    public void deletingSubscription(int idUser) {// дописать если значение Null
+    public boolean deletingSubscription(int idUser) {
 
+        boolean subscription = false;
         List<Users> userList = usersDao.findAll();
         for (Users user : userList) {
-            if (user.getIdUser() == idUser) {
+            if (user.getIdUser() == idUser && user.getPriceUser() != null) {
+                subscription = true;
                 user.setPriceUser(null);
                 usersDao.update(user);
             }
         }
+        return subscription;
     }
 }
