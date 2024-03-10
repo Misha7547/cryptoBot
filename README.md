@@ -22,25 +22,37 @@
 
 ![Бот 2 ](https://github.com/Misha7547/cryptoBot/assets/117103365/c0bd0dac-7754-4591-a60b-55669405b7ed)
 
-### База данных
-Для удобной работы с postgreSql используется докер-образ,
-вам не нужно самостоятельно устанавливать postgreSql.
-Выполнив `docker-compose up`, вы запустите postgreSql с предустановленными
-настройками (их посмотреть можно в файле `docker-compose.yaml`).
-Для запуска докер образа вам понадобится установить `docker` и `docker-compose` 
+## Стек используемых технологий
+Java Core, Spring Boot, Hibernate, JDBC, Security, MySQL, Telegrambots.
 
-### Spring проект
+## Настройки для запуска
 
+### Зависимости
 В данном проекте используется Spring, gradle используется в качестве системы сборки.
-Основные зависимости уже указаны, но никто вам не запрещает добавлять новые.
 
-В `application.yml` находятся конфигурируемые параметры нашего приложения
-(в частности, там указывается токен вашего бота)
+     implementation 'org.springframework.boot:spring-boot-starter'
+	   implementation "org.telegram:telegrambots:$telegrambotsVersion"
+	   implementation "org.telegram:telegrambotsextensions:$telegrambotsVersion"
+	   implementation "ch.qos.logback:logback-classic:$logbackVersion"
+	   implementation "ch.qos.logback:logback-core:$logbackVersion"
+	   implementation group: 'javax.xml.bind', name: 'jaxb-api', version: jaxbApiVersion
+	   implementation group: 'org.springframework', name: 'spring-orm', version: springOrmVersion
+	   implementation 'org.hibernate:hibernate-core:5.6.2.Final'
+	   implementation 'mysql:mysql-connector-java:8.0.33'
+
+### Запуск
+
+Что бы запустить проект  нужно в файле application.yml указать имя и токен бота, что бы подключиться к телеграм боту 
+
+    username: 
+    token:
+
+Так же в файле hibernate.cfg.xml, нужно указать такблицу, которую будете добавлять пользователя, имя и пароль, для подключении таблицы MySQL
+
+        <property name="connection.url">jdbc:mysql://localhost:3306/ имя таблицы</property>
+        <property name="connection.username"> имя базы даных </property>
+        <property name="connection.password">пароль</property>
 
 
-## Как запустить
 
-При открытии директории через IntelliJ IDEA проект должен автоматически распознаться.
-У вас должна появится `run configuration CryptoBotApplication` (зеленый треугольник),
-если не появился, можно пройти в класс `CryptoBotApplication` и оттуда напрямую вызвать `main` метод.
 
