@@ -26,7 +26,7 @@ public class CostTrackingService {
     private CryptoCurrencyService service;
     private UserDao usersDao = new UserDao();
 
-    @Scheduled(fixedDelay = 2000)
+    @Scheduled(fixedDelay = 200000)
     public void checkingSubscription() throws IOException {
         List<Users> userList = usersDao.findAll();
 
